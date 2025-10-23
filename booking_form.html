@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نموذج حجز جلسة تصوير</title>
+    <!-- تحميل Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- خط Cairo والتخصيصات -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap');
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: #0d0d0d;
+            background-image: url(Pictures/4kScreen.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center; /* للتأكد من توسيط الصورة */
+            color: #f0f0f0;
+            line-height: 1.6;
+
+        }
+        /* تصميم خاص للنموذج (Form) */
+        .form-input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #333;
+            background-color: #1a1a1a;
+            color: #f0f0f0;
+            transition: border-color 0.3s;
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: #B9A27B;
+        }
+        .cta-button {
+            transition: background-color 0.3s ease, transform 0.1s ease;
+        }
+        .cta-button:hover {
+            background-color: #B9A27B;
+            transform: translateY(-2px);
+        }
+        #success-message {
+            transition: opacity 0.5s ease-in-out;
+        }
+        .whatsapp-button {
+            background-color: #25d36576; /* لون الواتساب الأصلي */
+            color: white;
+            transition: background-color 0.3s ease, transform 0.1s ease;
+        }
+        .whatsapp-button:hover {
+            background-color: #128c7e;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الهيدر (نسخة مبسطة) -->
+    <header class="bg-gradient-to-br from-[#141C1A]/20 to-[#1e2725]/0 backdrop-blur-sm">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <!-- رابط العودة للصفحة الرئيسية -->
+            <a href="index.html" class="text-[#B9A27B] hover:text-white transition duration-200">
+                &larr; العودة للباقات
+            </a>
+            <h1 class="text-xl font-bold">نموذج طلب حجز</h1>
+        </div>
+    </header>
+
+    <main class="py-16 px-4">
+        <!-- ****** قسم نموذج طلب الحجز ****** -->
+        <div class="bg-gradient-to-br from-[#141C1A]/60 to-[#1e2725]/50 backdrop-blur-lg p-8 md:p-12 rounded-2xl shadow-2xl max-w-3xl mx-auto">
+            <h4 class="text-3xl font-bold mb-6 text-[#B9A27B] text-center">أرسل طلب الحجز الآن</h4>
+            <p class="text-gray-400 mb-8 text-center">يرجى ملء النموذج، وسنتواصل معك لتأكيد التفاصيل وتحديد الموعد.</p>
+
+            <form id="reservation-form" class="space-y-6">
+                <!-- رسالة نجاح الإرسال (مخفية بالبداية) -->
+                <div id="success-message" class="bg-green-600 p-4 rounded-lg text-white font-semibold text-center hidden opacity-0">
+                    ✓ تم استلام طلب حجزك بنجاح! شكراً لك، وسنتواصل معك قريباً.
+                </div>
+
+                <!-- الصف الأول: الاسم والإيميل -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-300 mb-2">الاسم الكامل</label>
+                        <input type="text" id="name" name="name" required class="form-input">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-300 mb-2">البريد الإلكتروني (الإيميل)</label>
+                        <input type="email" id="email" name="email" required class="form-input">
+                    </div>
+                </div>
+
+                <!-- الصف الثاني: الهاتف ونوع الجلسة -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="phone" class="block text-sm font-medium text-gray-300 mb-2">رقم الهاتف</label>
+                        <input type="tel" id="phone" name="phone" class="form-input">
+                    </div>
+                    <div>
+                        <label for="session-type" class="block text-sm font-medium text-gray-300 mb-2">نوع الجلسة المفضّل</label>
+                        <select id="session-type" name="session-type" required class="form-input appearance-none">
+                            <option value="" disabled selected>اختر الباقة...</option>
+                            <option value="Portrait">جلسة بورتريه (شخصي)</option>
+                            <option value="Commercial">تصوير منتجات / شركات</option>
+                            <option value="Event">تغطية مناسبات (زفاف/تخرج)</option>
+                            <option value="Other">أخرى (يرجى التحديد في الرسالة)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- الصف الثالث: التاريخ المفضّل -->
+                <div>
+                    <label for="date" class="block text-sm font-medium text-gray-300 mb-2">التاريخ المفضّل للحجز</label>
+                    <input type="date" id="date" name="date" class="form-input">
+                </div>
+
+                <!-- الصف الرابع: الرسالة الإضافية -->
+                <div>
+                    <label for="message" class="block text-sm font-medium text-gray-300 mb-2">رسالة/تفاصيل إضافية عن المشروع</label>
+                    <textarea id="message" name="message" rows="4" class="form-input resize-none"></textarea>
+                </div>
+                
+                <!-- زر الإرسال -->
+                <button type="submit" class="cta-button bg-[#B9A27B] text-black font-bold py-3 px-6 rounded-lg w-full text-center block text-lg mt-6">إرسال طلب الحجز</button>
+            </form>
+            <div class="mt-4 text-center">
+                <p class="text-sm text-gray-400 mb-2">أو تواصل معنا مباشرة عبر:</p>
+                <!-- لازم تبدّل الرقم اللي هون برقمك مع رمز البلد (بدون + أو مسافات) -->
+                <a href="https://wa.me/4917621613949" target="_blank" class="whatsapp-button font-bold py-3 px-6 rounded-lg w-full text-center block text-lg shadow-lg flex items-center justify-center">
+                    <!-- تم إضافة w-6 و h-6 لتحديد حجم الصورة -->
+                    <span class="inline-block align-middle ml-3 w-6 h-6">
+                        <img src="Icon/whatsapp.png" alt="whatsapp icon" class="w-full h-full object-contain">
+                    </span>
+                    مراسلة عبر واتساب
+                </a>
+            </div>
+        </div>
+        <!-- ******************************************** -->
+    </main>
+    
+    <!-- الفوتر (Footer) -->
+    <footer class="bg-gradient-to-br from-[#141C1A]/60 to-[#1e2725]/50 backdrop-blur-lg py-3 mt-16">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-sm text-gray-600 mt-6">&copy; 2024 عبد الله الحبالتي. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <!-- سكريبت معالجة النموذج -->
+    <script>
+        // دالة لاستخراج قيمة معامل (Parameter) من رابط URL
+        function getQueryParameter(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const sessionType = getQueryParameter('type');
+            const selectElement = document.getElementById('session-type');
+            const reservationForm = document.getElementById('reservation-form');
+            const successMessage = document.getElementById('success-message');
+
+            // التعبئة التلقائية لنوع الجلسة إذا تم تحديده في الرابط
+            if (sessionType && selectElement) {
+                // التأكد من أن القيمة موجودة كخيار
+                const optionExists = Array.from(selectElement.options).some(option => option.value === sessionType);
+                if (optionExists) {
+                    selectElement.value = sessionType;
+                }
+            }
+            
+            // معالجة إرسال النموذج (وظيفة مؤقتة)
+            reservationForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                // إظهار رسالة النجاح
+                successMessage.classList.remove('hidden');
+                setTimeout(() => {
+                    successMessage.classList.add('opacity-100');
+                }, 10);
+
+                // إخفاء الرسالة وإعادة تعيين النموذج
+                setTimeout(() => {
+                    successMessage.classList.remove('opacity-100');
+                    setTimeout(() => {
+                        successMessage.classList.add('hidden');
+                        reservationForm.reset();
+                    }, 500);
+                }, 5000);
+                
+                // هنا المكان اللي لازم تربطه ببرمجة خلفية حقيقية (مثل إرسال البيانات إلى بريدك الإلكتروني)
+                const formData = new FormData(reservationForm);
+                const data = Object.fromEntries(formData.entries());
+                console.log('بيانات الطلب الجاهزة للإرسال:', data);
+            });
+        });
+    </script>
+
+</body>
+</html>
