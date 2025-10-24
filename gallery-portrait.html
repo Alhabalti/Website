@@ -26,20 +26,60 @@
             position: absolute;
             bottom: 0;
             right: 0;
-            width: 50px;
+            width: 2rem;
             height: 3px;
-            background-color: #B9A27B; /* لون ذهبي/أصفر مميز */
+            background-color: rgb(185, 162, 123); /* لون ذهبي/أصفر مميز */
             border-radius: 9999px;
         }
         /* تأثير بسيط على صور المعرض */
         .gallery-image-item {
             border: 2px solid transparent;
             transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            /* الإضافات الجديدة */
+            position: relative; /* ضرورية لنحط اللمعة فوقها */
+            overflow: hidden;   /* ضرورية لتخبّي اللمعة لما تكون برا الصورة */
         }
+
+        /* كود تأثير اللمعة (الشاين) */
+
+/* 1. تصميم شكل اللمعة (::after هو عنصر وهمي) */
+        .gallery-image-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+    
+             /* بتبلش اللمعة برا الصورة عاليسار */
+            left: -100%;
+    
+            width: 75%; /* عرض اللمعة */
+            height: 100%;
+    
+             /* هاد هو شكل اللمعة: خط أبيض شفاف مائل */
+             /* فيك تعدل 0.3 لتزيد قوة اللمعة أو تنقصها */
+            background: linear-gradient(
+                90deg, 
+                rgba(255, 255, 255, 0) 0%, 
+                rgba(255, 255, 255, 0.3) 50%, 
+                rgba(255, 255, 255, 0) 100%
+            );
+    
+            /* إمالة اللمعة 25 درجة */
+            transform: skewX(-25deg);
+
+        }
+
+        .gallery-image-item:hover::after {
+             /* عند الـ hover، انقل اللمعة للطرف اليمين */
+            left: 120%;
+                    
+            /* سرعة الحركة (عدّل 0.75s لتغيير السرعة) */
+            transition: left 0.25s ease-in-out;
+        }
+
         .gallery-image-item:hover {
             transform: scale(1.03);
             border-color: #B9A27B;
-            box-shadow: 0 5px 15px rgba(209, 176, 0, 0.2);
+            box-shadow: 0 0px 65px rgba(185, 162, 123, 0.6);
         }
     </style>
 </head>
@@ -57,14 +97,29 @@
     </header>
 
     <main class="py-24">
-        <section id="gallery-grid" class="container mx-auto px-4 py-16">
-            
-            <div class="text-center md:text-right mb-12">
-                <h3 class="text-4xl font-bold mb-6 section-title inline-block text-white">معرض صور: بورتريه إبداعي</h3>
-                <p class="text-lg text-gray-300 max-w-2xl mx-auto md:mx-0">
-                    استعراض لمجموعة من أعمالي في تصوير البورتريه، حيث تلتقي الدقة الفنية بالعاطفة.
+                    <div class="text-center  mb-12">
+                <h3 class="text-4xl font-bold mb-6 text-white">معرض صور: بورتريه إبداعي</h3>
+                <p class="text-lg text-gray-300 max-w-2xl mx-auto inline-block  ">
+             استعراض لمجموعة من أعمالي في تصوير البورتريه.. لتكون صورك مأخوذة بإتقان متناهي
                 </p>
             </div>
+
+        <section id="gallery-grid" class="container mx-auto px-4 py-16">
+            
+            <!-- <div class="text-center md:text-right mb-12">
+                <h3 class="text-4xl font-bold mb-6 section-title inline-block text-white">إيطاليا -  ميلان  </h3>
+                 <p class="text-lg text-gray-300 max-w-2xl mx-auto md:mx-0">
+                    استعراض لمجموعة من أعمالي في تصوير البورتريه، لترى صورك كما لم تكون من قبل .
+                </p> 
+            </div> -->
+            <h3 class="text-4xl font-bold mb-6 section-title inline-flex items-center gap-x-3 text-[#B9A27B]">
+    
+                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"></path>
+                </svg>
+                <span class="text-white">إيطاليا -  ميلان</span>
+            </h3>
             
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
                 
@@ -80,7 +135,25 @@
                 <!-- <div class="gallery-image-item rounded-lg overflow-hidden shadow-xl">
                     <img src="Gallery/Portrat/4.png" alt="صورة بورتريه 4" class="w-full h-full object-cover">
                 </div> -->
-                <div class="gallery-image-item rounded-lg overflow-hidden shadow-xl">
+                </div>
+        </section>
+
+        <section id="gallery-grid" class="container mx-auto px-4 py-16">
+            
+            <h3 class="text-4xl font-bold mb-6 section-title inline-flex items-center gap-x-3 text-[#B9A27B]">
+    
+                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"></path>
+                </svg>
+                <span class="text-white">ألمانيا - فرانكفورت</span>
+            </h3>
+            
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+
+            <div class="gallery-image-item rounded-lg overflow-hidden shadow-xl">
                     <img src="Gallery/Portrat/5.png" alt="صورة بورتريه 5" class="w-full h-full object-cover">
                 </div>
                 <div class="gallery-image-item rounded-lg overflow-hidden shadow-xl">
@@ -89,7 +162,23 @@
                 <div class="gallery-image-item rounded-lg overflow-hidden shadow-xl">
                     <img src="Gallery/Portrat/7.png" alt="صورة بورتريه 7" class="w-full h-full object-cover">
                 </div>
-                <div class="gallery-image-item rounded-lg overflow-hidden shadow-xl">
+            </div>    
+        </section>
+
+        <section id="gallery-grid" class="container mx-auto px-4 py-16">
+            
+            <h3 class="text-4xl font-bold mb-6 section-title inline-flex items-center gap-x-3 text-[#B9A27B]">
+    
+                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"></path>
+                </svg>
+                <span class="text-white">ألمانيا - شمال الراين</span>
+            </h3>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+            
+            <div class="gallery-image-item rounded-lg overflow-hidden shadow-xl">
                     <img src="Gallery/Portrat/8.png" alt="صورة بورتريه 8" class="w-full h-full object-cover">
                 </div>
                 <div class="gallery-image-item rounded-lg overflow-hidden shadow-xl">
@@ -98,8 +187,7 @@
                 <div class="gallery-image-item rounded-lg overflow-hidden shadow-xl">
                     <img src="Gallery/Portrat/12.png" alt="صورة بورتريه 12" class="w-full h-full object-cover">
                 </div>
-
-                </div>
+            </div>
         </section>
 
     </main>
