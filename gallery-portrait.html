@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>معرض صور البورتريه - عبد الله الحبالتي</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap');
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: #1C2624; /* خلفية داكنة */
+            color: #f0f0f0;
+            line-height: 1.6;
+            background-image: url('Pictures/4kScreen.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .section-title {
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 50px;
+            height: 3px;
+            background-color: #B9A27B; /* لون ذهبي/أصفر مميز */
+            border-radius: 9999px;
+        }
+        /* تأثير بسيط على صور المعرض */
+        .gallery-image-item {
+            border: 2px solid transparent;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .gallery-image-item:hover {
+            transform: scale(1.03);
+            border-color: #B9A27B;
+            box-shadow: 0 5px 15px rgba(209, 176, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <header class=" backdrop-blur-lg fixed top-0 z-50 w-full shadow-lg">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html#portfolio" class="text-[#B9A27B] hover:text-white transition duration-200 p-2 rounded-lg text-lg">
+                &larr; العودة للأعمال
+            </a>
+            <a href="index.html#home" class="flex items-center">
+                <img src="AbdullahLogo/Artboard 1.png" alt="شعار استوديو عبد الله الحبالتي" class="h-8 md:h-10 rounded-lg shadow-lg">
+            </a>
+        </div>
+    </header>
+
+    <main class="py-24">
+        <section id="gallery-grid" class="container mx-auto px-4 py-16">
+            
+            <div class="text-center md:text-right mb-12">
+                <h3 class="text-4xl font-bold mb-6 section-title inline-block text-white">معرض صور: بورتريه إبداعي</h3>
+                <p class="text-lg text-gray-300 max-w-2xl mx-auto md:mx-0">
+                    استعراض لمجموعة من أعمالي في تصوير البورتريه، حيث تلتقي الدقة الفنية بالعاطفة.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+                
+                <div class="gallery-image-item rounded-lg overflow-hidden shadow-xl">
+                    <img src="Gallery/Portrat/1.png" alt="صورة بورتريه 1" class="w-full h-full object-cover">
+                </div>
+                <div class="gallery-image-item rounded-lg overflow-hidden shadow-xl">
+                    <img src="Gallery/Portrat/2.png" alt="صورة بورتريه 2" class="w-full h-full object-cover">
+                </div>
+                <div class="gallery-image-item rounded-lg overflow-hidden shadow-xl">
+                    <img src="Gallery/Portrat/3.png" alt="صورة بورتريه 3" class="w-full h-full object-cover">
+                </div>
+                <!-- <div class="gallery-image-item rounded-lg overflow-hidden shadow-xl">
+                    <img src="Gallery/Portrat/4.png" alt="صورة بورتريه 4" class="w-full h-full object-cover">
+                </div> -->
+                <div class="gallery-image-item rounded-lg overflow-hidden shadow-xl">
+                    <img src="Gallery/Portrat/5.png" alt="صورة بورتريه 5" class="w-full h-full object-cover">
+                </div>
+                <div class="gallery-image-item rounded-lg overflow-hidden shadow-xl">
+                    <img src="Gallery/Portrat/6.png" alt="صورة بورتريه 6" class="w-full h-full object-cover">
+                </div>
+                <div class="gallery-image-item rounded-lg overflow-hidden shadow-xl">
+                    <img src="Gallery/Portrat/7.png" alt="صورة بورتريه 7" class="w-full h-full object-cover">
+                </div>
+                <div class="gallery-image-item rounded-lg overflow-hidden shadow-xl">
+                    <img src="Gallery/Portrat/8.png" alt="صورة بورتريه 8" class="w-full h-full object-cover">
+                </div>
+                <div class="gallery-image-item rounded-lg overflow-hidden shadow-xl">
+                    <img src="Gallery/Portrat/9.png" alt="صورة بورتريه 9" class="w-full h-full object-cover">
+                </div>
+                <div class="gallery-image-item rounded-lg overflow-hidden shadow-xl">
+                    <img src="Gallery/Portrat/12.png" alt="صورة بورتريه 12" class="w-full h-full object-cover">
+                </div>
+
+                </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-black py-8 border-t border-gray-800">
+        <div class="container mx-auto px-4 text-center">
+            <h5 class="text-2xl font-bold text-[#B9A27B] mb-4">تواصل معي</h5>
+            <p class="text-gray-400 mb-2"> Mail : Alhabalti@gmx.de</p>
+            <p class="text-gray-400 mb-4"> Mobile : +4917621613949 </p>
+            
+            <div class="flex justify-center space-x-4 space-x-reverse text-2xl">
+                <a href="https://www.instagram.com/abdullah_alhabalti" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-[#B9A27B] transition" title="Instagram Abdullah" >
+                    <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
+                </a>
+            </div>
+            <p class="text-sm text-gray-600 mt-6">&copy; 2025 عبد الله الحبالتي. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
